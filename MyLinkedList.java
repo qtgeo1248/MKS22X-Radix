@@ -86,49 +86,6 @@ public class MyLinkedList<E> {
         return now;
     }
 
-    public E get(int index) {
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
-        } else if (index == 0) { //this also makes sure that theres no errors with size 1
-            return start.getData();
-        } else if (index == size() - 1) { //these two ifs make it faster
-            return end.getData();
-        } else {
-            return getNthNode(index).getData();
-        }
-    }
-
-    public E set(int index, E value) { //basically the same as get, but with set
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
-        } else if (index == 0) {
-            return start.setData(value);
-        } else if (index == size() - 1) {
-            return end.setData(value);
-        } else {
-            return getNthNode(index).setData(value);
-        }
-    }
-
-    public int indexOf(E value) {
-        Node currentNode = start;
-        for (int idx = 0; idx < size(); idx++) { //goes through list to see if any same
-            if (currentNode.getData().equals(value)) {
-                return idx;
-            }
-            currentNode = currentNode.next();
-        }
-        return -1;
-    }
-
-    public boolean contains(E value) {
-        if (indexOf(value) > -1) { //this uses indexOf to make life easier
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public void add(int index, E value) {
         Node toAdd = new Node(value); //to make life easier in ifs
         if (index < 0 || index > size()) {
@@ -151,7 +108,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    public E remove(int index) {
+    private E remove(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         } else if (index == size() - 1) {
@@ -176,23 +133,10 @@ public class MyLinkedList<E> {
         }
     }
 
-    public boolean remove(E value) {
-        Node currentNode = start;
-        for (int idx = 0; idx < size(); idx++) { //goes through list to see if any same
-            if (currentNode.getData().equals(value)) {
-                if (idx == 0 || idx == size() - 1) {
-                    remove(idx);
-                    return true;
-                } else {
-                    length--;
-                    currentNode.prev().setNext(currentNode.next());
-                    currentNode.next().setPrev(currentNode.prev());
-                    return true;
-                }
-            }
-            currentNode = currentNode.next();
-        }
-        return false;
+    public E removeFront() {
+        E toReturn = start.getData();
+        remove(0);
+        return toReturn;
     }
 
     public void extend(MyLinkedList other) {
