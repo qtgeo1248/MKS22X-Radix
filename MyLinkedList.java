@@ -47,6 +47,10 @@ public class MyLinkedList<E> {
         end = null;
     }
 
+    public int size() {
+        return length;
+    }
+
     public String toString() {
         Node currentNode = start;
         String ans = "[";
@@ -77,21 +81,30 @@ public class MyLinkedList<E> {
         return true;
     }
 
-    public int size() {
-        return length;
+    public void extend(MyLinkedList other) {
+        if (size() == 0) {
+            start = other.start;
+            end = other.end;
+            length = other.size();
+            other.length = 0;
+            other.start = null;
+            other.end = null;
+        } else if (other.size() != 0) {
+            end.setNext(other.start);
+            other.start.setPrev(end);
+            end = other.end;
+            length += other.length;
+            other.end = null;
+            other.start = null;
+            other.length = 0;
+        }
     }
 
-    private Node getNthNode(int n) {
-        if (n < 0 || n >= size()) {
-            throw new IndexOutOfBoundsException(); //just for debugging for debugging purposes
-        }
-        Node now = start; //start at start
-        for (; n > 0; n--) {
-            now = now.next(); //keeps on going until you go n times
-        }
-        return now;
+    public E removeFront() {
+        E toReturn = start.getData();
+        remove(0);
+        return toReturn;
     }
-
     private E remove(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
@@ -117,28 +130,14 @@ public class MyLinkedList<E> {
         }
     }
 
-    public E removeFront() {
-        E toReturn = start.getData();
-        remove(0);
-        return toReturn;
-    }
-
-    public void extend(MyLinkedList other) {
-        if (size() == 0) {
-            start = other.start;
-            end = other.end;
-            length = other.size();
-            other.length = 0;
-            other.start = null;
-            other.end = null;
-        } else if (other.size() != 0) {
-            end.setNext(other.start);
-            other.start.setPrev(end);
-            end = other.end;
-            length += other.length;
-            other.end = null;
-            other.start = null;
-            other.length = 0;
+    private Node getNthNode(int n) {
+        if (n < 0 || n >= size()) {
+            throw new IndexOutOfBoundsException(); //just for debugging for debugging purposes
         }
+        Node now = start; //start at start
+        for (; n > 0; n--) {
+            now = now.next(); //keeps on going until you go n times
+        }
+        return now;
     }
 }
