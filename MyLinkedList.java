@@ -41,7 +41,7 @@ public class MyLinkedList<E> {
         length = 0;
     }
 
-    public boolean add(Integer value) {
+    public boolean add(E value) {
         Node toAdd = new Node(value);
         if (length == 0) { //special case
             start = toAdd;
@@ -86,7 +86,7 @@ public class MyLinkedList<E> {
         return now;
     }
 
-    public Integer get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         } else if (index == 0) { //this also makes sure that theres no errors with size 1
@@ -98,7 +98,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    public Integer set(int index, Integer value) { //basically the same as get, but with set
+    public E set(int index, E value) { //basically the same as get, but with set
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         } else if (index == 0) {
@@ -110,7 +110,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    public int indexOf(Integer value) {
+    public int indexOf(E value) {
         Node currentNode = start;
         for (int idx = 0; idx < size(); idx++) { //goes through list to see if any same
             if (currentNode.getData().equals(value)) {
@@ -121,7 +121,7 @@ public class MyLinkedList<E> {
         return -1;
     }
 
-    public boolean contains(Integer value) {
+    public boolean contains(E value) {
         if (indexOf(value) > -1) { //this uses indexOf to make life easier
             return true;
         } else {
@@ -129,7 +129,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    public void add(int index, Integer value) {
+    public void add(int index, E value) {
         Node toAdd = new Node(value); //to make life easier in ifs
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
@@ -151,16 +151,16 @@ public class MyLinkedList<E> {
         }
     }
 
-    public Integer remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         } else if (index == size() - 1) {
-            Integer toReturn = end.getData();
+            E toReturn = end.getData();
             end = end.prev(); //resets the end (not necessary to set end.next to null)
             length--;
             return toReturn;
         } else if (index == 0) {
-            Integer toReturn = start.getData();
+            E toReturn = start.getData();
             start = start.next(); //resets start, but not needed to set startprev to null
             length--;
             return toReturn;
@@ -168,7 +168,7 @@ public class MyLinkedList<E> {
             Node before = getNthNode(index - 1);
             Node now = before.next();
             Node after = now.next();
-            Integer toReturn = now.getData();
+            E toReturn = now.getData();
             before.setNext(after);
             after.setPrev(before); //rewires
             length--;
@@ -176,7 +176,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    public boolean remove(Integer value) {
+    public boolean remove(E value) {
         Node currentNode = start;
         for (int idx = 0; idx < size(); idx++) { //goes through list to see if any same
             if (currentNode.getData().equals(value)) {
