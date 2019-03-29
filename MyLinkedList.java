@@ -1,9 +1,9 @@
-public class MyLinkedList {
+public class MyLinkedList<E> {
     private class Node {
-        private Integer data;
+        private E data;
         private Node next, prev;
 
-        public Node(int val) {
+        public Node(E val) {
             data = val;
         }
 
@@ -13,7 +13,7 @@ public class MyLinkedList {
         public Node prev() {
             return prev;
         }
-        public Integer getData() {
+        public E getData() {
             return data;
         }
 
@@ -23,8 +23,8 @@ public class MyLinkedList {
         public void setPrev(Node newN) {
             prev = newN;
         }
-        public Integer setData(Integer i) {
-            int toReturn = data;
+        public E setData(E i) {
+            E toReturn = data;
             data = i;
             return toReturn;
         }
