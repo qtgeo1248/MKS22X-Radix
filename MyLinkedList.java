@@ -46,7 +46,7 @@ public class MyLinkedList<E> {
         start = null;
         end = null;
     }
-    
+
     public String toString() {
         Node currentNode = start;
         String ans = "[";
@@ -90,28 +90,6 @@ public class MyLinkedList<E> {
             now = now.next(); //keeps on going until you go n times
         }
         return now;
-    }
-
-    public void add(int index, E value) {
-        Node toAdd = new Node(value); //to make life easier in ifs
-        if (index < 0 || index > size()) {
-            throw new IndexOutOfBoundsException();
-        } else if (index == size()) { //these 2 cases make if faster
-            add(value);
-        } else if (index == 0) {
-            length++;
-            start.setPrev(toAdd);
-            toAdd.setNext(start);
-            start = toAdd;
-        } else {
-            length++;
-            Node before = getNthNode(index - 1);
-            Node after = before.next();
-            before.setNext(toAdd);
-            toAdd.setPrev(before);
-            toAdd.setNext(after); //this is all the rewiring of the nodes
-            after.setPrev(toAdd);
-        }
     }
 
     private E remove(int index) {
