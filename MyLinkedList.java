@@ -41,6 +41,10 @@ public class MyLinkedList<E> {
         length = 0;
     }
 
+    public void clear() {
+
+    }
+
     public boolean add(E value) {
         Node toAdd = new Node(value);
         if (length == 0) { //special case
