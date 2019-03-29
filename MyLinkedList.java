@@ -46,6 +46,21 @@ public class MyLinkedList<E> {
         start = null;
         end = null;
     }
+    
+    public String toString() {
+        Node currentNode = start;
+        String ans = "[";
+        for (int idx = 0; idx < size(); idx++) {
+            ans += currentNode.toString() + ", "; //adds the next node's data
+            if (currentNode.next() != null) {
+                currentNode = currentNode.next(); //cycles through the nodes
+            }
+            if (idx == size() - 1) {
+                ans = ans.substring(0, ans.length() - 2);
+            }
+        }
+        return ans + "]";
+    }
 
     public boolean add(E value) {
         Node toAdd = new Node(value);
@@ -64,21 +79,6 @@ public class MyLinkedList<E> {
 
     public int size() {
         return length;
-    }
-
-    public String toString() {
-        Node currentNode = start;
-        String ans = "[";
-        for (int idx = 0; idx < size(); idx++) {
-            ans += currentNode.toString() + ", "; //adds the next node's data
-            if (currentNode.next() != null) {
-                currentNode = currentNode.next(); //cycles through the nodes
-            }
-            if (idx == size() - 1) {
-                ans = ans.substring(0, ans.length() - 2);
-            }
-        }
-        return ans + "]";
     }
 
     private Node getNthNode(int n) {
