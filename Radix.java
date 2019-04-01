@@ -30,9 +30,9 @@ public class Radix {
             sortedish.extend(buckets[i]);
         }
 
-        for (int place = 1; place < numDigs; place++) {
-            for (int i = 0; i < sortedish.size(); i++) {
-
+        for (int place = 2; place <= numDigs; place++) {
+            for (int i = 0; i < data.length; i++) {
+                int digit = Math.abs((sortedish.removeFront() % (int)(Math.pow(10, place))) / (int)Math.pow(10, place - 1));
             }
         }
     }
