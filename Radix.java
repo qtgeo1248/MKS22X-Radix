@@ -13,5 +13,8 @@ public class Radix {
         }
 
         int numDigs = ("" + max).length();
+        while (numDigs > 0) {
+            numDigs--;
+        }
     }
 }
