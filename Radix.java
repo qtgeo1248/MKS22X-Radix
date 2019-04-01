@@ -40,9 +40,10 @@ public class Radix {
                     buckets[9 - digit].add(num);
                 }
             }
-        }
-        for (int i = 0 ; i < buckets.length; i++) {
-            System.out.println(buckets[i]);
+            sortedish.clear();
+            for (int i = 0; i < buckets.length; i++) {
+                sortedish.extend(buckets[i]);
+            }
         }
     }
 }
