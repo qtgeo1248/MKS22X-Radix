@@ -18,18 +18,12 @@ public class Radix {
             buckets[i] = new MyLinkedList<Integer>();
         }
         for (int i = 0; i < data.length; i++) {
-            int digit = Math.abs(data[i] % 10)
+            int digit = Math.abs(data[i] % 10);
             if (data[i] >= 0) {
                 buckets[digit + 10].add(data[i]);
             } else {
                 buckets[9 - digit].add(data[i]);
             }
-        }
-        while (numDigs > 0) {
-            for (int i = 0; i < data.length; i++) {
-
-            }
-            numDigs--;
         }
     }
 }
