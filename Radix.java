@@ -14,6 +14,10 @@ public class Radix {
 
         int numDigs = ("" + max).length();
         while (numDigs > 0) {
+            MyLinkedList[] buckets = new MyLinkedList[20];
+            for (int i = 0; i < buckets.length; i++) {
+                buckets[i] = new MyLinkedList<Integer>();
+            }
             numDigs--;
         }
     }
