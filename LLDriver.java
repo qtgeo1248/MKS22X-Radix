@@ -20,5 +20,13 @@ public class LLDriver {
         t1.extend(t2);
         System.out.println(t1);
         System.out.println(t2);
+
+        MyLinkedList<Integer> t3 = new MyLinkedList<Integer>();
+        t3.add(12);
+        t3.add(37);
+        System.out.println(t3);
+        t2.extend(t3);
+        System.out.println(t2);
+        System.out.println(t3);
     }
 }
