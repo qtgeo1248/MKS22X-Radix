@@ -18,6 +18,9 @@ public class Radix {
             for (int i = 0; i < buckets.length; i++) {
                 buckets[i] = new MyLinkedList<Integer>();
             }
+            for (int i = 0; i < data.length; i++) {
+                
+            }
             numDigs--;
         }
     }
