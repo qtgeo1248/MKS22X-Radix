@@ -14,6 +14,9 @@ public class Radix {
 
         int numDigs = ("" + max).length();
         MyLinkedList<Integer> copy = new MyLinkedList<Integer>();
+        for (int i = 0; i < data.length; i++) {
+            copy.add(data[i]);
+        }
         while (numDigs > 0) {
             MyLinkedList[] buckets = new MyLinkedList[20];
             for (int i = 0; i < buckets.length; i++) {
