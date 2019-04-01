@@ -11,5 +11,7 @@ public class Radix {
                 max = Math.abs(data[i]);
             }
         }
+
+        int numDigs = ("" + max).length();
     }
 }
