@@ -102,42 +102,8 @@ public class MyLinkedList<E> {
 
     public E removeFront() {
         E toReturn = start.getData();
-        remove(0);
+        start = start.next(); //resets start, but not needed to set startprev to null
+        length--;
         return toReturn;
-    }
-    private E remove(int index) {
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
-        } else if (index == size() - 1) {
-            E toReturn = end.getData();
-            end = end.prev(); //resets the end (not necessary to set end.next to null)
-            length--;
-            return toReturn;
-        } else if (index == 0) {
-            E toReturn = start.getData();
-            start = start.next(); //resets start, but not needed to set startprev to null
-            length--;
-            return toReturn;
-        } else {
-            Node before = getNthNode(index - 1);
-            Node now = before.next();
-            Node after = now.next();
-            E toReturn = now.getData();
-            before.setNext(after);
-            after.setPrev(before); //rewires
-            length--;
-            return toReturn;
-        }
-    }
-
-    private Node getNthNode(int n) {
-        if (n < 0 || n >= size()) {
-            throw new IndexOutOfBoundsException(); //just for debugging for debugging purposes
-        }
-        Node now = start; //start at start
-        for (; n > 0; n--) {
-            now = now.next(); //keeps on going until you go n times
-        }
-        return now;
     }
 }
