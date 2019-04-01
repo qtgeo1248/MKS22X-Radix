@@ -32,8 +32,16 @@ public class Radix {
 
         for (int place = 2; place <= numDigs; place++) {
             for (int i = 0; i < data.length; i++) {
-                int digit = Math.abs((sortedish.removeFront() % (int)(Math.pow(10, place))) / (int)Math.pow(10, place - 1));
+                int digit = Math.abs((sortedish.removeFront() % (int)Math.pow(10, place)) / (int)Math.pow(10, place - 1));
+                if (data[i] >= 0) {
+                    buckets[digit + 10].add(data[i]);
+                } else {
+                    buckets[9 - digit].add(data[i]);
+                }
             }
+        }
+        for (int i = 0 ; i < buckets.length; i++) {
+            System.out.println(buckets[i]);
         }
     }
 }
