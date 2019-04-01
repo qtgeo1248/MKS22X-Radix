@@ -25,9 +25,15 @@ public class Radix {
                 buckets[9 - digit].add(data[i]);
             }
         }
-        MyLinkedList<Integer> sortedish = new MyLinkedList<Integers>();
+        MyLinkedList<Integer> sortedish = new MyLinkedList<Integer>();
         for (int i = 0; i < buckets.length; i++) {
             sortedish.extend(buckets[i]);
+        }
+
+        for (int place = 1; place < numDigs; place++) {
+            for (int i = 0; i < sortedish.size(); i++) {
+
+            }
         }
     }
 }
