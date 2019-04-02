@@ -12,9 +12,9 @@ public class Radix {
             }
         }
 
-        int numDigs = ("" + max).length();
+        int numDigs = ("" + max).length(); //finds num of digits
         MyLinkedList[] buckets = new MyLinkedList[20];
-        for (int i = 0; i < buckets.length; i++) {
+        for (int i = 0; i < buckets.length; i++) { //first pass to put data into mylinked list
             buckets[i] = new MyLinkedList<Integer>();
         }
         for (int i = 0; i < data.length; i++) {
@@ -25,22 +25,22 @@ public class Radix {
                 buckets[9 - digit].add(data[i]);
             }
         }
-        MyLinkedList<Integer> sortedish = new MyLinkedList<Integer>();
+        MyLinkedList<Integer> sortedish = new MyLinkedList<Integer>(); //linkedlist that makes it easy and quick
         for (int i = 0; i < buckets.length; i++) {
             sortedish.extend(buckets[i]);
         }
 
         for (int place = 2; place <= numDigs; place++) {
             for (int i = 0; i < data.length; i++) {
-                int num = sortedish.removeFront();
-                int digit = Math.abs((num % (int)Math.pow(10, place)) / (int)Math.pow(10, place - 1));
+                int num = sortedish.removeFront(); //stores the first number
+                int digit = Math.abs((num % (int)Math.pow(10, place)) / (int)Math.pow(10, place - 1)); //complicated math to find a certain digit
                 if (num >= 0) {
-                    buckets[digit + 10].add(num);
+                    buckets[digit + 10].add(num); //the positive number case
                 } else {
-                    buckets[9 - digit].add(num);
+                    buckets[9 - digit].add(num); //the negative number case
                 }
             }
-            sortedish.clear();
+            sortedish.clear(); //clears the list, and then buts in buckets
             for (int i = 0; i < buckets.length; i++) {
                 sortedish.extend(buckets[i]);
             }
