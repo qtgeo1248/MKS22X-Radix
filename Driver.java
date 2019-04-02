@@ -18,5 +18,17 @@ public class Driver {
                        4269, 4579, 4624, -5110, 5277, 5820, 6008, 6246, -6421, 6466, 6853, 6993, 7016, 7393, 7539, 7708, 8129, 8412, 9012, 9254, 9730, -9732, 9753, 9821, -9929};
         Radix.radixsort(test4);
         System.out.println(Arrays.toString(test4));
+
+        int[] test5 = {-3928};
+        Radix.radixsort(test5);
+        System.out.println(Arrays.toString(test5));
+
+        int[] test6 = {-3892, 85, -03432324};
+        Radix.radixsort(test6);
+        System.out.println(Arrays.toString(test6));
+
+        int[] test7 = {85, -03432324};
+        Radix.radixsort(test7);
+        System.out.println(Arrays.toString(test7));
     }
 }
