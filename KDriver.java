@@ -5,7 +5,7 @@ public class KDriver {
     public static void main(String[] args) {
         Random gen = new Random();
         System.out.println("Size\t\tMax Value\tradix/builtin ratio ");
-        int[] MAX_LIST = {1000000000, 500, 10};
+        int[] MAX_LIST = {10, 500, 1000000000};
         for (int MAX : MAX_LIST) {
             for (int size = 31250; size < 2000001; size *= 2) {
                 long qtime = 0;
@@ -15,7 +15,7 @@ public class KDriver {
                     int[] data1 = new int[size];
                     int[] data2 = new int[size];
                     for (int i = 0; i < data1.length; i++) {
-                        data1[i] = Math.abs(gen.nextInt()) % (MAX + 1);
+                        data1[i] = Math.abs(gen.nextInt()) % (MAX);
                         data2[i] = data1[i];
                     }
                     long t1, t2;
