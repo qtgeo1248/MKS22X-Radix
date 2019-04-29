@@ -1,4 +1,5 @@
 import java.lang.Math;
+@SuppressWarnings({"unchecked", "rawtypes"})
 
 public class Radix {
     public static void radixsort(int[] data) {
@@ -18,7 +19,7 @@ public class Radix {
             buckets[i] = new MyLinkedList<Integer>();
         }
         for (int i = 0; i < data.length; i++) {
-            int digit = Math.abs((num / (int)Math.pow(10, place)) % 10);
+            int digit = Math.abs(data[i] % 10);
             if (data[i] >= 0) {
                 buckets[digit + 10].add(data[i]);
             } else {
